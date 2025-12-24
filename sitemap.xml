@@ -13,5 +13,23 @@
     <priority>0.8</priority>
   </url>
   
-  <!-- Add all your pages here -->
+
+  <url>
+    <loc>https://the-ikbhal-space.vercel.app/siemreap-tourist-retiree</loc>
+    <lastmod>2024-12-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://the-ikbhal-space.vercel.app/usa-vs-cambodia-retirement</loc>
+    <lastmod>2024-12-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://the-ikbhal-space.vercel.app/phnom-penh-vs-siem-reap-retirement</loc>
+    <lastmod>2024-12-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
