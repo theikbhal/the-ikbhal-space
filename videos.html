@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Shorts Gallery - The Ikbhal Space</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #0f0f0f;
+            color: white;
+            padding-bottom: 2rem;
+        }
+
+        .header {
+            background: #1f1f1f;
+            padding: 1rem;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Mobile specific adjustments for Shorts feel */
+        @media (max-width: 600px) {
+            .video-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        .video-card {
+            background: #1f1f1f;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            /* 16:9 Aspect Ratio */
+            height: 0;
+            background: #000;
+        }
+
+        /* Specific class for Shorts (vertical) */
+        .video-wrapper.short {
+            padding-bottom: 177.77%;
+            /* 9:16 Aspect Ratio */
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .video-info {
+            padding: 1rem;
+        }
+
+        .video-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .video-date {
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        .page-btn {
+            background: #333;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .page-btn:hover {
+            background: #444;
+        }
+
+        .page-btn.active {
+            background: #667eea;
+            font-weight: bold;
+        }
+
+        .page-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .nav-link {
+            display: block;
+            text-align: center;
+            margin-top: 2rem;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <h1>📹 Shorts & Videos</h1>
+    </header>
+
+    <div class="container">
+        <div id="videoContainer" class="video-grid">
+            <!-- Videos will be injected here -->
+        </div>
+
+        <div id="pagination" class="pagination">
+            <!-- Pagination buttons will be injected here -->
+        </div>
+
+        <a href="index.html" class="nav-link">← Back to Home</a>
+    </div>
+
+    <script>
+        // ==========================================
+        // CONFIGURATION & DATA
+        // ==========================================
+
+        const ITEMS_PER_PAGE = 6;
+
+        // JUST PASTE YOUTUBE URLs HERE (Shorts or Regular)
+        const videoUrls = [
+            "https://www.youtube.com/shorts/brevGhryrLU"
+        ];
+
+        // ==========================================
+        // LOGIC
+        // ==========================================
+
+        let currentPage = 1;
+
+        function getVideoInfo(url) {
+            let id = '';
+            let type = 'normal';
+
+            try {
+                const urlObj = new URL(url);
+                if (url.includes('/shorts/')) {
+                    type = 'short';
+                    id = url.split('/shorts/')[1].split('?')[0];
+                } else if (url.includes('v=')) {
+                    id = urlObj.searchParams.get('v');
+                } else if (url.includes('youtu.be')) {
+                    id = urlObj.pathname.slice(1);
+                }
+            } catch (e) {
+                console.error("Invalid URL:", url);
+            }
+
+            return { id, type };
+        }
+
+        function renderVideos(page) {
+            const container = document.getElementById('videoContainer');
+            container.innerHTML = '';
+
+            const start = (page - 1) * ITEMS_PER_PAGE;
+            const end = start + ITEMS_PER_PAGE;
+            const paginatedItems = videoUrls.slice(start, end);
+
+            paginatedItems.forEach(url => {
+                const { id, type } = getVideoInfo(url);
+
+                if (!id) return; // Skip invalid URLs
+
+                const isShort = type === 'short';
+                const card = document.createElement('div');
+                card.className = 'video-card';
+
+                // Simplified card without separate title/date sections since we only have the URL
+                card.innerHTML = `
+                    <div class="video-wrapper ${isShort ? 'short' : ''}">
+                        <iframe 
+                            src="https://www.youtube.com/embed/${id}" 
+                            title="YouTube video player" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function renderPagination() {
+            const paginationContainer = document.getElementById('pagination');
+            paginationContainer.innerHTML = '';
+
+            const totalPages = Math.ceil(videoUrls.length / ITEMS_PER_PAGE);
+
+            if (totalPages <= 1) return; // Don't show pagination if only 1 page
+
+            // Previous Button
+            const prevBtn = document.createElement('button');
+            prevBtn.className = 'page-btn';
+            prevBtn.innerText = '←';
+            prevBtn.disabled = currentPage === 1;
+            prevBtn.onclick = () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    updatePage();
+                }
+            };
+            paginationContainer.appendChild(prevBtn);
+
+            // Numbered Buttons
+            for (let i = 1; i <= totalPages; i++) {
+                const btn = document.createElement('button');
+                btn.className = `page-btn ${i === currentPage ? 'active' : ''}`;
+                btn.innerText = i;
+                btn.onclick = () => {
+                    currentPage = i;
+                    updatePage();
+                };
+                paginationContainer.appendChild(btn);
+            }
+
+            // Next Button
+            const nextBtn = document.createElement('button');
+            nextBtn.className = 'page-btn';
+            nextBtn.innerText = '→';
+            nextBtn.disabled = currentPage === totalPages;
+            nextBtn.onclick = () => {
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    updatePage();
+                }
+            };
+            paginationContainer.appendChild(nextBtn);
+        }
+
+        function updatePage() {
+            renderVideos(currentPage);
+            renderPagination();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Initial Load
+        updatePage();
+
+    </script>
+</body>
+
+</html>
