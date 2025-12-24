@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Living the Dream: My Retirement Life in Siem Reap, Cambodia</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    body {
+        font-family: Georgia, 'Times New Roman', serif;
+        line-height: 1.8;
+        color: #2c3e50;
+        background: #f8f9fa;
+    }
+
+    .hero {
+        background: linear-gradient(135deg, rgba(41, 128, 185, 0.9), rgba(142, 68, 173, 0.9)), 
+                    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400"><rect fill="%23667eea" width="1200" height="400"/></svg>');
+        background-size: cover;
+        background-position: center;
+        color: white;
+        padding: 4rem 2rem;
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        font-weight: 700;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .hero .subtitle {
+        font-size: 1.3rem;
+        font-style: italic;
+        opacity: 0.95;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .author-info {
+        background: white;
+        padding: 1.5rem;
+        max-width: 900px;
+        margin: -2rem auto 2rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        position: relative;
+        z-index: 10;
+    }
+
+    .author-info strong {
+        color: #2980b9;
+    }
+
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem;
+    }
+
+    article {
+        background: white;
+        padding: 3rem 2.5rem;
+        border-radius: 12px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        margin-bottom: 2rem;
+    }
+
+    h2 {
+        color: #2980b9;
+        font-size: 1.8rem;
+        margin: 2.5rem 0 1.2rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 3px solid #3498db;
+    }
+
+    h2:first-of-type {
+        margin-top: 0;
+    }
+
+    p {
+        margin-bottom: 1.3rem;
+        text-align: justify;
+    }
+
+    .emphasis {
+        background: #e8f4f8;
+        border-left: 4px solid #3498db;
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+        border-radius: 4px;
+    }
+
+    .emphasis strong {
+        color: #2980b9;
+        display: block;
+        margin-bottom: 0.5rem;
+        font-size: 1.1rem;
+    }
+
+    .cost-table {
+        background: #f8f9fa;
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+    }
+
+    .cost-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.8rem 0;
+        border-bottom: 1px solid #dee2e6;
+    }
+
+    .cost-row:last-child {
+        border-bottom: none;
+    }
+
+    .cost-label {
+        font-weight: 600;
+        color: #495057;
+    }
+
+    .cost-value {
+        color: #2980b9;
+        font-weight: 700;
+    }
+
+    .quote-box {
+        background: linear-gradient(135deg, #667eea15, #764ba215);
+        border-left: 5px solid #667eea;
+        padding: 1.5rem;
+        margin: 2rem 0;
+        font-style: italic;
+        font-size: 1.1rem;
+        color: #34495e;
+        border-radius: 4px;
+    }
+
+    .daily-schedule {
+        background: #fff8e1;
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+    }
+
+    .time-item {
+        margin: 1rem 0;
+        padding: 1rem;
+        background: white;
+        border-radius: 6px;
+        border-left: 4px solid #ffa726;
+    }
+
+    .time-label {
+        font-weight: 700;
+        color: #e65100;
+        margin-bottom: 0.3rem;
+    }
+
+    .pros-cons-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        margin: 1.5rem 0;
+    }
+
+    .pros, .cons {
+        padding: 1.5rem;
+        border-radius: 8px;
+    }
+
+    .pros {
+        background: #e8f5e9;
+        border-left: 5px solid #4caf50;
+    }
+
+    .cons {
+        background: #fff3e0;
+        border-left: 5px solid #ff9800;
+    }
+
+    .pros h3, .cons h3 {
+        margin: 0 0 1rem 0;
+        font-size: 1.3rem;
+    }
+
+    .pros h3 {
+        color: #2e7d32;
+    }
+
+    .cons h3 {
+        color: #e65100;
+    }
+
+    .pros ul, .cons ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .pros li, .cons li {
+        margin: 0.8rem 0;
+        padding-left: 1.5rem;
+        position: relative;
+    }
+
+    .pros li:before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: #4caf50;
+        font-weight: bold;
+    }
+
+    .cons li:before {
+        content: "⚠";
+        position: absolute;
+        left: 0;
+    }
+
+    .footer-cta {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        padding: 3rem 2rem;
+        text-align: center;
+        border-radius: 12px;
+        margin: 2rem 0;
+    }
+
+    .footer-cta h2 {
+        color: white;
+        border: none;
+        margin: 0 0 1rem 0;
+    }
+
+    .footer-cta p {
+        margin-bottom: 1.5rem;
+        font-size: 1.1rem;
+    }
+
+    .video-btn {
+        display: inline-block;
+        background: white;
+        color: #667eea;
+        padding: 1rem 2.5rem;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 1.1rem;
+        transition: all 0.3s;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .video-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    }
+
+    @media (max-width: 768px) {
+        .hero h1 {
+            font-size: 1.8rem;
+        }
+
+        .hero .subtitle {
+            font-size: 1.1rem;
+        }
+
+        article {
+            padding: 2rem 1.5rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+        }
+
+        .pros-cons-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .author-info {
+            margin: -1rem 1rem 1rem;
+        }
+    }
+</style>
+</head>
+<body>
+    <div class="hero">
+        <h1>Living the Dream: My Retirement Life in Siem Reap, Cambodia</h1>
+        <p class="subtitle">After 30 years in IT and a lifetime of grinding in California, I found something unexpected in Siem Reap—actual retirement.</p>
+    </div>
+<div class="author-info">
+    <strong>By Mike</strong>, an American retiree who has been living in Cambodia for the past 3 years
+</div>
+
+<div class="container">
+    <article>
+        <h2>How I Ended Up Here</h2>
+        <p>When I first came to Cambodia, it wasn't love at first sight. Honestly, I never really planned to retire here. I was looking for what my friend called a "Plan B"—a place with a good visa where I could always come back if I needed to. He told me: "You always should have a plan B. Always have a place you can go back to that you know you can get into."</p>
+
+        <p>Cambodia fit the bill. The retirement visa was easy to get, and I could just leave it dormant, ready when I needed it. But something happened between 2022 and now. I met my wife, fell in love with this city, and realized that my Plan B had become my Plan A.</p>
+
+        <h2>Why Siem Reap Instead of Phnom Penh?</h2>
+        <p>I really like Phnom Penh—it's a great city. But the size got to me. It's always so busy, the traffic is intense, and it just felt overwhelming for someone trying to slow down.</p>
+
+        <p>Siem Reap did something smart. They invested in infrastructure. You can walk from downtown all the way to Angkor Wat on beautiful sidewalks the entire way. They made the city accessible for people who want to walk or bike, and that matters when you're retired and just want to enjoy your day.</p>
+
+        <div class="emphasis">
+            <strong>The Tourism Advantage</strong>
+            Here's the real advantage of Siem Reap: tourism. I know some people complain about tourists, but as a retiree, tourism is your friend. Because of the millions who visit Angkor Wat every year, way more people speak English here. The restaurants are world-class because tourists love to eat and drink, and guess what? So do retirees.
+        </div>
+
+        <p>When I go to my wife's province, no one speaks English at all. It's humorous but also difficult. Here in Siem Reap, if you don't speak Khmer, it's pretty easy to get by. Plus, the river, the coffee shops, the whole vibe—this city just works for me.</p>
+
+        <h2>What Does a Day Actually Look Like?</h2>
+        <p>People always ask me: "What do you do all day?" And I get it. After working 10 to 14-hour days for three decades, people assume you need something to fill the time.</p>
+
+        <p>But here's what I figured out sitting in a Starbucks in Japan right after I retired: there's nothing I have to do. And that's glorious.</p>
+
+        <div class="quote-box">
+            "My wife tells me my job is to walk and drink coffee every day. So that's what I do."
+        </div>
+
+        <div class="daily-schedule">
+            <h3 style="margin-top: 0; color: #e65100;">A Typical Day:</h3>
+            
+            <div class="time-item">
+                <div class="time-label">5:00 AM</div>
+                Our Cambodian neighbors are early risers. My wife joins them for tea next door. I'm not that ambitious.
+            </div>
+
+            <div class="time-item">
+                <div class="time-label">5:00 - 8:00 AM</div>
+                I watch some news, listen to music, maybe browse YouTube for a couple of hours.
+            </div>
+
+            <div class="time-item">
+                <div class="time-label">8:00 AM - 12:00 PM</div>
+                I head out to coffee shops—sometimes Noi Coffee along the river, sometimes somewhere new. Then I walk, take photos, observe. I'm out until noon most days.
+            </div>
+
+            <div class="time-item">
+                <div class="time-label">3:00 PM</div>
+                My wife cooks a big meal. I only eat one meal a day now—lost a lot of weight doing that.
+            </div>
+
+            <div class="time-item">
+                <div class="time-label">Evening</div>
+                More of the same: coffee, maybe some beer, or just relaxing. Some days I plan to do something specific, but when the day comes, I don't do it. I do something else or nothing at all. And that's perfectly fine.
+            </div>
+        </div>
+
+        <h2>The Money Talk: What Does This Life Cost?</h2>
+        <p>Let's be real—this is what most people want to know.</p>
+
+        <p>We live in rural Siem Reap in a three-bedroom house. Rent is $200 a month. Back in California, you'd pay $2,000 for an apartment—maybe more. That's 2/3 of your retirement income gone on housing alone. Here, it's barely a dent.</p>
+
+        <div class="cost-table">
+            <h3 style="margin-top: 0; color: #2980b9;">Monthly Expenses:</h3>
+            <div class="cost-row">
+                <span class="cost-label">Rent (3-bedroom house)</span>
+                <span class="cost-value">$200</span>
+            </div>
+            <div class="cost-row">
+                <span class="cost-label">Electricity (with AC)</span>
+                <span class="cost-value">$60</span>
+            </div>
+            <div class="cost-row">
+                <span class="cost-label">Water</span>
+                <span class="cost-value">$2</span>
+            </div>
+            <div class="cost-row">
+                <span class="cost-label">Trash</span>
+                <span class="cost-value">$0.50</span>
+            </div>
+            <div class="cost-row">
+                <span class="cost-label">Internet/Cell Phone</span>
+                <span class="cost-value">$6</span>
+            </div>
+            <div class="cost-row">
+                <span class="cost-label">Food</span>
+                <span class="cost-value">$400-600</span>
+            </div>
+        </div>
+
+        <p>I initially budgeted $600 a month and rarely spent it all. I'd eat street food along the river or go to nice restaurants—it all fit within that budget.</p>
+
+        <div class="quote-box">
+            "I did a Google search once: 'How much for a really nice life in Cambodia?' It said $2,000 a month and you'd have a wonderful life—the best apartment, best food, travel whenever you want."
+        </div>
+
+        <p>But here's the perspective: most Cambodian people make about $200 a month—10% of that "wonderful life" budget. It's a different scale entirely.</p>
+
+        <p>I think $700-800 a month gets you a comfortable life. I have a friend who pays $150 for rent and makes $800 total. He always has money left over at the end of the month.</p>
+
+        <p>Back in California? I would have barely survived. I probably would have ended up at a Burger King playing cribbage all day, barely eating, with no social life because my money would be gone.</p>
+
+        <h2>The Visa Situation: Easier Than You Think</h2>
+        <p>One of the best things about Cambodia is how straightforward the retirement visa is. It's been the same process since 2018—nothing like the hoops you jump through in Thailand or the Philippines.</p>
+
+        <div class="emphasis">
+            <strong>If you're over 55, the process is simple:</strong>
+            • Takes about an hour of your time<br>
+            • Your passport is surrendered and sent to Phnom Penh immigration<br>
+            • Takes 5-10 days to process<br>
+            • Comes back with a full-page stamp<br>
+            • Renew once a year
+        </div>
+
+        <p>They've never asked me for proof of income. There are rumors they want to see $1,500 a month, but I've never experienced that. If you're under 55, you do need to prove retirement income, but for those of us over 55, it's a breeze.</p>
+
+        <p>And here's the best part: they don't care if you travel. My wife and I can go to Vietnam, Malaysia, wherever—there's no checking in, no interviews, no restrictions. Some countries make you report every time you leave or come back. Not here.</p>
+
+        <h2>The Real Story: Pros and Cons</h2>
+        
+        <div class="pros-cons-grid">
+            <div class="pros">
+                <h3>The Pros</h3>
+                <ul>
+                    <li>Ease of everything - housing doesn't require credit checks, waiting periods, or complex contracts</li>
+                    <li>The people are different here—in a good way. Life moves slower</li>
+                    <li>You actually get to retire. Many people back home still work because they can't make it financially</li>
+                    <li>Freedom to travel without restrictions</li>
+                    <li>World-class restaurants and coffee shops</li>
+                    <li>Beautiful walkable infrastructure</li>
+                </ul>
+            </div>
+
+            <div class="cons">
+                <h3>The Cons</h3>
+                <ul>
+                    <li>People expect paradise. It's not. There's poverty here and real problems</li>
+                    <li>The culture is different. The language is different. Getting used to that takes time</li>
+                    <li>If you're expecting Singapore-level infrastructure, you'll be disappointed</li>
+                    <li>Western food and "luxury items" cost more than local options</li>
+                    <li>You need to be flexible and patient</li>
+                </ul>
+            </div>
+        </div>
+
+        <p>I'm lucky because I have a Cambodian wife who handles a lot of things that might be challenging for others. When I first lived here alone, my landlord took care of everything. But it's still an adjustment.</p>
+
+        <h2>The Bigger Picture: Location and Travel</h2>
+        <p>Cambodia sits right in the middle of Southeast Asia. Malaysia's one way, Vietnam's the other. For years, I'd just hop around the region easily. It's like having all of Southeast Asia as your backyard.</p>
+
+        <p>But honestly, I'm more interested in seeing Cambodia now. There are places here I haven't been to yet, and my wife loves showing me around. She's also never been to some of the places in Asia where I've traveled, and when she sees my photos, she says, "Oh honey, I want to go there."</p>
+
+        <p>We have that freedom. We can go when we want. But we're also perfectly happy staying put.</p>
+
+        <h2>What I'd Tell Someone Considering This</h2>
+        <p><strong>First,</strong> understand how retirement works in your home country. Different countries have different laws about accessing your money, reporting income, and banking. Some won't let you touch retirement funds until a certain age. Know your situation before you move.</p>
+
+        <p><strong>Second,</strong> be realistic. If you like just eating Cambodian food, you can live incredibly cheaply. But if you want Western food, luxury items, and frequent dining out, it costs more. Not California prices, but more than the bare minimum.</p>
+
+        <p><strong>Third,</strong> accept that this is a different culture. The people are wonderful, but they're different. Things work differently. You need to be patient and flexible.</p>
+
+        <p><strong>Finally,</strong> don't expect error-free perfection. Life here is 90% great for me, maybe because I have a Cambodian wife who helps navigate things. But even when I lived here alone, I had no major problems.</p>
+
+        <div class="quote-box">
+            "Life's supposed to be when you retire, life's supposed to be more. You're supposed to be able to do the things you couldn't do when you worked. In America, that's impossible. Here, it's my reality."
+        </div>
+
+        <p>So yes, Cambodia—and specifically Siem Reap—became my permanent home. It went from Plan B to the best decision I ever made. I wake up every day without a schedule, without stress, with enough money to live comfortably, and with the freedom to simply exist.</p>
+
+        <p>That's retirement. And I found it here, along the rivers and coffee shops of Siem Reap.</p>
+    </article>
+
+    <div class="footer-cta">
+        <h2>Want to Learn More?</h2>
+        <p>Watch the full video interview to hear Mike's complete story about retiring in Cambodia</p>
+        <a href="https://www.youtube.com/watch?v=80AyT_ty-kA" class="video-btn" target="_blank">▶ Watch Full Interview</a>
+    </div>
+</div>
+</body>
+</html>
