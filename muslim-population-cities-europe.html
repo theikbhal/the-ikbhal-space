@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muslim Population in Major European Cities (2024-2025)</title>
+    <meta name="description"
+        content="Explore the Muslim population data for top European cities. Includes percentages, absolute numbers, and total city populations for 2024-2025.">
+    <style>
+        :root {
+            --primary: #10b981;
+            --primary-light: #34d399;
+            --bg-dark: #070a13;
+            --card-bg: rgba(15, 23, 42, 0.8);
+            --text-main: #f1f5f9;
+            --text-dim: #94a3b8;
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --accent: #f59e0b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg-dark);
+            background-image:
+                radial-gradient(circle at 10% 10%, rgba(16, 185, 129, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 90%, rgba(245, 158, 11, 0.05) 0%, transparent 20%);
+            background-attachment: fixed;
+            color: var(--text-main);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .header {
+            padding: 5rem 1rem 3rem;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .header h1 {
+            font-size: 2.8rem;
+            font-weight: 900;
+            background: linear-gradient(to right, #10b981, #3b82f6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .header p {
+            color: var(--text-dim);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem 4rem;
+        }
+
+        .search-container {
+            margin-bottom: 2.5rem;
+            position: relative;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #citySearch {
+            width: 100%;
+            padding: 1.2rem 1.5rem;
+            border-radius: 16px;
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            color: white;
+            font-size: 1.1rem;
+            backdrop-filter: blur(10px);
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        #citySearch:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .city-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 1.8rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .city-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(16, 185, 129, 0.3);
+            background: rgba(15, 23, 42, 0.95);
+        }
+
+        .city-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+
+        .city-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .country-tag {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--primary-light);
+            background: rgba(16, 185, 129, 0.1);
+            padding: 0.3rem 0.8rem;
+            border-radius: 100px;
+        }
+
+        .stat-bar-container {
+            margin-top: 1rem;
+        }
+
+        .stat-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dim);
+        }
+
+        .percentage-value {
+            font-weight: 800;
+            color: white;
+        }
+
+        .progress-bg {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(to right, #10b981, #059669);
+            border-radius: 4px;
+        }
+
+        .absolute-stats {
+            margin-top: 1.8rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            border-top: 1px solid var(--glass-border);
+            padding-top: 1.2rem;
+        }
+
+        .abs-stat-item span {
+            display: block;
+        }
+
+        .abs-label {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .abs-value {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .abs-value.highlight {
+            color: var(--accent);
+        }
+
+        .footer-nav {
+            margin-top: 4rem;
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .nav-link {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-light);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.22rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <h1>Muslim Population in European Cities</h1>
+        <p>A comprehensive guide to the Muslim demographic across major European metropolitan areas for 2024-2025.</p>
+    </header>
+
+    <div class="container">
+        <div class="search-container">
+            <input type="text" id="citySearch" placeholder="Search city or country...">
+        </div>
+
+        <div class="stats-grid" id="statsGrid">
+            <!-- Cards will be injected by JavaScript -->
+        </div>
+
+        <div class="footer-nav">
+            <p style="color: var(--text-dim); font-size: 0.9rem; max-width: 800px; margin: 0 auto 1.5rem;">
+                Note: Figures are based on metropolitan area estimates, municipal censuses, and demographic projections.
+                Some data points include asylum seekers and refugees as recorded in 2024-2025 reports.
+            </p>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">← Home</a>
+                <a href="muslim-population-europe.html" class="nav-link">Country Ranking</a>
+                <a href="sitemap.xml" class="nav-link">Sitemap</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const cityData = [
+            { city: "Pristina", country: "Kosovo", totalPop: "227,466", muslimPop: "213,818", percentage: 94.0 },
+            { city: "Tirana", country: "Albania", totalPop: "600,000", muslimPop: "304,020", percentage: 50.7 },
+            { city: "Sarajevo", country: "Bosnia", totalPop: "348,000", muslimPop: "176,436", percentage: 50.7 },
+            { city: "London", country: "United Kingdom", totalPop: "8,900,000", muslimPop: "1,335,000", percentage: 15.0 },
+            { city: "Paris", country: "France", totalPop: "2,100,000", muslimPop: "315,000", percentage: 15.0 },
+            { city: "Brussels", country: "Belgium", totalPop: "1,200,000", muslimPop: "300,000", percentage: 25.0 },
+            { city: "Berlin", country: "Germany", totalPop: "3,850,000", muslimPop: "385,000", percentage: 10.0 },
+            { city: "Vienna", country: "Austria", totalPop: "1,900,000", muslimPop: "228,000", percentage: 12.0 },
+            { city: "Athens", country: "Greece", totalPop: "3,155,000", muslimPop: "260,000", percentage: 8.2 },
+            { city: "Amsterdam", country: "Netherlands", totalPop: "920,000", muslimPop: "120,000", percentage: 13.0 },
+            { city: "Madrid", country: "Spain", totalPop: "3,300,000", muslimPop: "297,000", percentage: 9.0 },
+            { city: "Stockholm", country: "Sweden", totalPop: "985,000", muslimPop: "98,500", percentage: 10.0 },
+            { city: "Copenhagen", country: "Denmark", totalPop: "1,391,000", muslimPop: "139,100", percentage: 10.0 },
+            { city: "Oslo", country: "Norway", totalPop: "720,000", muslimPop: "62,640", percentage: 8.7 },
+            { city: "Skopje", country: "N. Macedonia", totalPop: "608,133", muslimPop: "195,818", percentage: 32.2 },
+            { city: "Sofia", country: "Bulgaria", totalPop: "1,295,000", muslimPop: "64,750", percentage: 5.0 },
+            { city: "Rome", country: "Italy", totalPop: "2,800,000", muslimPop: "112,000", percentage: 4.0 },
+            { city: "Helsinki", country: "Finland", totalPop: "684,000", muslimPop: "27,360", percentage: 4.0 },
+            { city: "Lisbon", country: "Portugal", totalPop: "575,000", muslimPop: "40,000", percentage: 6.9 },
+            { city: "Podgorica", country: "Montenegro", totalPop: "190,000", muslimPop: "38,000", percentage: 20.0 },
+            { city: "Bern", country: "Switzerland", totalPop: "133,000", muslimPop: "8,000", percentage: 6.0 },
+            { city: "Dublin", country: "Ireland", totalPop: "592,000", muslimPop: "11,840", percentage: 2.0 },
+            { city: "Moscow", country: "Russia", totalPop: "13,000,000", muslimPop: "1,500,000", percentage: 11.5 }
+        ];
+
+        const grid = document.getElementById('statsGrid');
+        const searchInput = document.getElementById('citySearch');
+
+        function renderCards(data) {
+            grid.innerHTML = '';
+            data.sort((a, b) => b.percentage - a.percentage).forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'city-card';
+                card.innerHTML = `
+                    <div class="city-header">
+                        <h2 class="city-name">${item.city}</h2>
+                        <span class="country-tag">${item.country}</span>
+                    </div>
+                    <div class="stat-bar-container">
+                        <div class="stat-label">
+                            <span>Muslim Population %</span>
+                            <span class="percentage-value">${item.percentage}%</span>
+                        </div>
+                        <div class="progress-bg">
+                            <div class="progress-fill" style="width: ${item.percentage}%"></div>
+                        </div>
+                    </div>
+                    <div class="absolute-stats">
+                        <div class="abs-stat-item">
+                            <span class="abs-label">Muslim Absolute</span>
+                            <span class="abs-value highlight">${item.muslimPop}</span>
+                        </div>
+                        <div class="abs-stat-item">
+                            <span class="abs-label">Total Population</span>
+                            <span class="abs-value">${item.totalPop}</span>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        renderCards(cityData);
+
+        searchInput.addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            const filtered = cityData.filter(item =>
+                item.city.toLowerCase().includes(term) ||
+                item.country.toLowerCase().includes(term)
+            );
+            renderCards(filtered);
+        });
+    </script>
+</body>
+
+</html>
