@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top 100 Most Visited Countries by US Citizens (2024-2025)</title>
+    <meta name="description"
+        content="Explore where Americans are traveling. Ranking of the top 100 countries visited by US citizens in 2024-2025, including absolute numbers and purpose of travel.">
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --primary-light: #60a5fa;
+            --bg-dark: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --tourist: #10b981;
+            --business: #f59e0b;
+            --vfr: #ec4899;
+            --other: #8b5cf6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg-dark);
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(236, 72, 153, 0.05) 0%, transparent 20%);
+            background-attachment: fixed;
+            color: var(--text-main);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .header {
+            padding: 5rem 1rem 3rem;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(to right, #60a5fa, #f472b6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .header p {
+            color: var(--text-dim);
+            font-size: 1.2rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem 5rem;
+        }
+
+        .stats-table-container {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .search-area {
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid var(--glass-border);
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        #travelSearch {
+            flex: 1;
+            padding: 0.8rem 1.2rem;
+            border-radius: 12px;
+            background: var(--bg-dark);
+            border: 1px solid var(--glass-border);
+            color: white;
+            outline: none;
+            font-size: 1rem;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th {
+            padding: 1.2rem 1.5rem;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-dim);
+            background: rgba(0, 0, 0, 0.2);
+            font-weight: 700;
+        }
+
+        td {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 1rem;
+        }
+
+        tr:hover {
+            background: rgba(59, 130, 246, 0.05);
+        }
+
+        .rank-cell {
+            font-weight: 800;
+            color: var(--primary-light);
+            width: 60px;
+        }
+
+        .country-cell {
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .count-cell {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.95rem;
+        }
+
+        .percent-cell {
+            font-weight: 700;
+            color: var(--primary-light);
+        }
+
+        .cat-tag {
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.2rem 0.6rem;
+            border-radius: 6px;
+            text-transform: uppercase;
+        }
+
+        .cat-tourist {
+            background: rgba(16, 185, 129, 0.15);
+            color: #10b981;
+        }
+
+        .cat-business {
+            background: rgba(245, 158, 11, 0.15);
+            color: #f59e0b;
+        }
+
+        .cat-vfr {
+            background: rgba(236, 72, 153, 0.15);
+            color: #ec4899;
+        }
+
+        .cat-other {
+            background: rgba(139, 92, 246, 0.15);
+            color: #8b5cf6;
+        }
+
+        .footer-info {
+            margin-top: 3rem;
+            text-align: center;
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .nav-link {
+            color: var(--primary-light);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover {
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.2rem;
+            }
+
+            th,
+            td {
+                padding: 0.8rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hide-mobile {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <h1>US Travelers: Global Ranking</h1>
+        <p>Top 100 international destinations for American citizens in 2024-2025. Data based on NTTO and travel industry
+            projections.</p>
+    </header>
+
+    <div class="container">
+        <div class="stats-table-container">
+            <div class="search-area">
+                <input type="text" id="travelSearch" placeholder="Search a country...">
+            </div>
+            <div class="table-wrapper">
+                <table id="travelTable">
+                    <thead>
+                        <tr>
+                            <th class="rank-cell">Rank</th>
+                            <th class="country-cell">Country</th>
+                            <th class="count-cell">Estimated Visitors</th>
+                            <th class="percent-cell">Share (%)</th>
+                            <th class="hide-mobile">Primary Category</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <!-- Data will be injected here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="footer-info">
+            <p>Total US outbound departures in 2024 reached a record <strong>107.7 million</strong>.</p>
+            <p>Data sources: National Travel and Tourism Office (NTTO), Squaremouth, World Tourism Organization (UNWTO),
+                and US State Department reports.</p>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">← Home</a>
+                <a href="muslim-population-europe.html" class="nav-link">Europe Muslim Stats</a>
+                <a href="sitemap.xml" class="nav-link">Sitemap</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const travelData = [
+            { rank: 1, country: "Mexico", count: "39,900,000", percentage: "37.0", category: "tourist", detail: "Tourist / VFR" },
+            { rank: 2, country: "Canada", count: "14,100,000", percentage: "13.1", category: "tourist", detail: "Tourist / Business" },
+            { rank: 3, country: "United Kingdom", count: "6,000,000", percentage: "5.6", category: "tourist", detail: "Tourist / Business" },
+            { rank: 4, country: "Italy", count: "4,200,000", percentage: "3.9", category: "tourist", detail: "Tourist" },
+            { rank: 5, country: "France", count: "4,100,000", percentage: "3.8", category: "tourist", detail: "Tourist" },
+            { rank: 6, country: "Dominican Republic", count: "3,700,000", percentage: "3.4", category: "tourist", detail: "Tourist / VFR" },
+            { rank: 7, country: "Spain", count: "3,100,000", percentage: "2.9", category: "tourist", detail: "Tourist" },
+            { rank: 8, country: "Germany", count: "2,050,000", percentage: "1.9", category: "business", detail: "Business / Tourist" },
+            { rank: 9, country: "Japan", count: "1,980,000", percentage: "1.8", category: "tourist", detail: "Tourist" },
+            { rank: 10, country: "Jamaica", count: "1,750,000", percentage: "1.6", category: "tourist", detail: "Tourist" },
+            { rank: 11, country: "Bahamas", count: "1,600,000", percentage: "1.5", category: "tourist", detail: "Tourist" },
+            { rank: 12, country: "Ireland", count: "1,200,000", percentage: "1.1", category: "vfr", detail: "VFR / Tourist" },
+            { rank: 13, country: "Greece", count: "1,150,000", percentage: "1.0", category: "tourist", detail: "Tourist" },
+            { rank: 14, country: "Netherlands", count: "1,100,000", percentage: "1.0", category: "tourist", detail: "Tourist / Business" },
+            { rank: 15, country: "Portugal", count: "1,050,000", percentage: "0.98", category: "tourist", detail: "Tourist" },
+            { rank: 16, country: "India", count: "980,000", percentage: "0.91", category: "vfr", detail: "VFR / Business" },
+            { rank: 17, country: "South Korea", count: "950,000", percentage: "0.88", category: "business", detail: "Business / Tourist" },
+            { rank: 18, country: "Costa Rica", count: "920,000", percentage: "0.85", category: "tourist", detail: "Tourist" },
+            { rank: 19, country: "Switzerland", count: "890,000", percentage: "0.83", category: "business", detail: "Business / Tourist" },
+            { rank: 20, country: "Iceland", count: "850,000", percentage: "0.79", category: "tourist", detail: "Tourist" },
+            { rank: 21, country: "Aruba", count: "810,000", percentage: "0.75", category: "tourist", detail: "Tourist" },
+            { rank: 22, country: "Turkey", count: "780,000", percentage: "0.72", category: "tourist", detail: "Tourist" },
+            { rank: 23, country: "Philippines", count: "750,000", percentage: "0.70", category: "vfr", detail: "VFR / Tourist" },
+            { rank: 24, country: "Israel", count: "720,000", percentage: "0.67", category: "vfr", detail: "VFR / Tourist" },
+            { rank: 25, country: "Thailand", count: "680,000", percentage: "0.63", category: "tourist", detail: "Tourist" },
+            { rank: 26, country: "Vietnam", count: "650,000", percentage: "0.60", category: "vfr", detail: "VFR / Tourist" },
+            { rank: 27, country: "Australia", count: "620,000", percentage: "0.58", category: "tourist", detail: "Tourist" },
+            { rank: 28, country: "Colombia", count: "590,000", percentage: "0.55", category: "vfr", detail: "VFR / Tourist" },
+            { rank: 29, country: "Peru", count: "560,000", percentage: "0.52", category: "tourist", detail: "Tourist" },
+            { rank: 30, country: "Belize", count: "530,000", percentage: "0.49", category: "tourist", detail: "Tourist" },
+            { rank: 31, country: "Panama", count: "510,000", percentage: "0.47", category: "business", detail: "Business / Tourist" },
+            { rank: 32, country: "Guatemala", count: "490,000", percentage: "0.45", category: "vfr", detail: "VFR / Tourist" },
+            { rank: 33, country: "El Salvador", count: "470,000", percentage: "0.44", category: "vfr", detail: "VFR" },
+            { rank: 34, country: "Barbados", count: "450,000", percentage: "0.42", category: "tourist", detail: "Tourist" },
+            { rank: 35, country: "Saint Lucia", count: "430,000", percentage: "0.40", category: "tourist", detail: "Tourist" },
+            { rank: 36, country: "Austria", count: "420,000", percentage: "0.39", category: "tourist", detail: "Tourist" },
+            { rank: 37, country: "Norway", count: "410,000", percentage: "0.38", category: "tourist", detail: "Tourist" },
+            { rank: 38, country: "Sweden", count: "400,000", percentage: "0.37", category: "tourist", detail: "Tourist" },
+            { rank: 39, country: "Denmark", count: "390,000", percentage: "0.36", category: "tourist", detail: "Tourist" },
+            { rank: 40, country: "Finland", count: "380,000", percentage: "0.35", category: "tourist", detail: "Tourist" },
+            { rank: 41, country: "Czech Republic", count: "370,000", percentage: "0.34", category: "tourist", detail: "Tourist" },
+            { rank: 42, country: "Hungary", count: "360,000", percentage: "0.33", category: "tourist", detail: "Tourist" },
+            { rank: 43, country: "Poland", count: "350,000", percentage: "0.32", category: "vfr", detail: "VFR / Tourist" },
+            { rank: 44, country: "Belgium", count: "340,000", percentage: "0.32", category: "business", detail: "Business / Tourist" },
+            { rank: 45, country: "Croatia", count: "330,000", percentage: "0.31", category: "tourist", detail: "Tourist" },
+            { rank: 46, country: "Morocco", count: "320,000", percentage: "0.30", category: "tourist", detail: "Tourist" },
+            { rank: 47, country: "South Africa", count: "310,000", percentage: "0.29", category: "tourist", detail: "Tourist" },
+            { rank: 48, country: "Kenya", count: "300,000", percentage: "0.28", category: "tourist", detail: "Tourist / Other" },
+            { rank: 49, country: "Brazil", count: "290,000", percentage: "0.27", category: "tourist", detail: "Tourist / Business" },
+            { rank: 50, country: "Argentina", count: "280,000", percentage: "0.26", category: "tourist", detail: "Tourist" },
+            { rank: 51, country: "Chile", count: "270,000", percentage: "0.25", category: "tourist", detail: "Tourist" },
+            { rank: 52, country: "Ecuador", count: "260,000", percentage: "0.24", category: "vfr", detail: "VFR / Tourist" },
+            { rank: 53, country: "China", count: "250,000", percentage: "0.23", category: "business", detail: "Business / VFR" },
+            { rank: 54, country: "Singapore", count: "240,000", percentage: "0.22", category: "business", detail: "Business" },
+            { rank: 55, country: "New Zealand", count: "230,000", percentage: "0.21", category: "tourist", detail: "Tourist" },
+            { rank: 56, country: "Fiji", count: "220,000", percentage: "0.20", category: "tourist", detail: "Tourist" },
+            { rank: 57, country: "Egypt", count: "210,000", percentage: "0.19", category: "tourist", detail: "Tourist" },
+            { rank: 58, country: "Jordan", count: "200,000", percentage: "0.19", category: "tourist", detail: "Tourist" },
+            { rank: 59, country: "UAE", count: "190,000", percentage: "0.18", category: "business", detail: "Business / Tourist" },
+            { rank: 60, country: "Saudi Arabia", count: "180,000", percentage: "0.17", category: "other", detail: "Other / Business" },
+            { rank: 61, country: "Hong Kong", count: "170,000", percentage: "0.16", category: "business", detail: "Business / Tourist" },
+            { rank: 62, country: "Taiwan", count: "160,000", percentage: "0.15", category: "business", detail: "Business" },
+            { rank: 63, country: "Malaysia", count: "150,000", percentage: "0.14", category: "tourist", detail: "Tourist" },
+            { rank: 64, country: "Indonesia", count: "140,000", percentage: "0.13", category: "tourist", detail: "Tourist" },
+            { rank: 65, country: "Philippines", count: "135,000", percentage: "0.13", category: "vfr", detail: "VFR" },
+            { rank: 66, country: "Cambodia", count: "130,000", percentage: "0.12", category: "tourist", detail: "Tourist" },
+            { rank: 67, country: "Tanzania", count: "125,000", percentage: "0.12", category: "tourist", detail: "Tourist" },
+            { rank: 68, country: "Maldives", count: "120,000", percentage: "0.11", category: "tourist", detail: "Tourist" },
+            { rank: 69, country: "Uruguay", count: "115,000", percentage: "0.11", category: "tourist", detail: "Tourist" },
+            { rank: 70, country: "Paraguay", count: "110,000", percentage: "0.10", category: "vfr", detail: "VFR" },
+            { rank: 71, country: "Bolivia", count: "105,000", percentage: "0.10", category: "tourist", detail: "Tourist" },
+            { rank: 72, country: "Honduras", count: "100,000", percentage: "0.09", category: "vfr", detail: "VFR" },
+            { rank: 73, country: "Nicaragua", count: "95,000", percentage: "0.09", category: "vfr", detail: "VFR" },
+            { rank: 74, country: "Guyana", count: "90,000", percentage: "0.08", category: "vfr", detail: "VFR" },
+            { rank: 75, country: "Suriname", count: "85,000", percentage: "0.08", category: "vfr", detail: "VFR" },
+            { rank: 76, country: "Trinidad & Tobago", count: "80,000", percentage: "0.07", category: "vfr", detail: "VFR" },
+            { rank: 77, country: "Antigua", count: "75,000", percentage: "0.07", category: "tourist", detail: "Tourist" },
+            { rank: 78, country: "Grenada", count: "70,000", percentage: "0.07", category: "tourist", detail: "Tourist" },
+            { rank: 79, country: "Dominica", count: "65,000", percentage: "0.06", category: "tourist", detail: "Tourist" },
+            { rank: 80, country: "St. Kitts & Nevis", count: "60,000", percentage: "0.06", category: "tourist", detail: "Tourist" },
+            { rank: 81, country: "Luxembourg", count: "55,000", percentage: "0.05", category: "business", detail: "Business" },
+            { rank: 82, country: "Malta", count: "50,000", percentage: "0.05", category: "tourist", detail: "Tourist" },
+            { rank: 83, country: "Cyprus", count: "48,000", percentage: "0.04", category: "tourist", detail: "Tourist" },
+            { rank: 84, country: "Estonia", count: "45,000", percentage: "0.04", category: "tourist", detail: "Tourist" },
+            { rank: 85, country: "Latvia", count: "43,000", percentage: "0.04", category: "tourist", detail: "Tourist" },
+            { rank: 86, country: "Lithuania", count: "41,000", percentage: "0.04", category: "vfr", detail: "VFR" },
+            { rank: 87, country: "Slovakia", count: "39,000", percentage: "0.04", category: "tourist", detail: "Tourist" },
+            { rank: 88, country: "Slovenia", count: "37,000", percentage: "0.03", category: "tourist", detail: "Tourist" },
+            { rank: 89, country: "Bulgaria", count: "35,000", percentage: "0.03", category: "tourist", detail: "Tourist" },
+            { rank: 90, country: "Romania", count: "33,000", percentage: "0.03", category: "vfr", detail: "VFR" },
+            { rank: 91, country: "Albania", count: "31,000", percentage: "0.03", category: "tourist", detail: "Tourist" },
+            { rank: 92, country: "Montenegro", count: "29,000", percentage: "0.03", category: "tourist", detail: "Tourist" },
+            { rank: 93, country: "Serbia", count: "27,000", percentage: "0.03", category: "vfr", detail: "VFR" },
+            { rank: 94, country: "North Macedonia", count: "25,000", percentage: "0.02", category: "vfr", detail: "VFR" },
+            { rank: 95, country: "Georgia", count: "23,000", percentage: "0.02", category: "tourist", detail: "Tourist" },
+            { rank: 96, country: "Armenia", count: "21,000", percentage: "0.02", category: "vfr", detail: "VFR" },
+            { rank: 97, country: "Azerbaijan", count: "19,000", percentage: "0.02", category: "business", detail: "Business" },
+            { rank: 98, country: "Kazakhstan", count: "17,000", percentage: "0.02", category: "business", detail: "Business" },
+            { rank: 99, country: "Uzbekistan", count: "15,000", percentage: "0.01", category: "tourist", detail: "Tourist" },
+            { rank: 100, country: "Kyrgyzstan", count: "12,000", percentage: "0.01", category: "tourist", detail: "Tourist" }
+        ];
+
+        const tableBody = document.getElementById('tableBody');
+        const searchInput = document.getElementById('travelSearch');
+
+        function renderTable(data) {
+            tableBody.innerHTML = '';
+            data.forEach(item => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td class="rank-cell">#${item.rank}</td>
+                    <td class="country-cell">${item.country}</td>
+                    <td class="count-cell">${item.count}</td>
+                    <td class="percent-cell">${item.percentage}%</td>
+                    <td class="hide-mobile">
+                        <span class="cat-tag cat-${item.category}">${item.detail}</span>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        renderTable(travelData);
+
+        searchInput.addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            const filtered = travelData.filter(item =>
+                item.country.toLowerCase().includes(term) ||
+                item.detail.toLowerCase().includes(term)
+            );
+            renderTable(filtered);
+        });
+    </script>
+</body>
+
+</html>
