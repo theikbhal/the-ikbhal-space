@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Justice: The Moral Side of Murder | Michael Sandel</title>
+    <meta name="description"
+        content="Explore the ethics of the Trolley Problem, Utilitarianism, and Categorical moral reasoning based on Michael Sandel's famous Harvard course on Justice.">
+    <style>
+        :root {
+            --primary: #c2410c;
+            /* Crimson / Harvard Red-ish */
+            --primary-light: #f97316;
+            --bg-dark: #0a0a0c;
+            --card-bg: rgba(20, 20, 25, 0.7);
+            --text-main: #f1f5f9;
+            --text-dim: #94a3b8;
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --utilitarian: #0ea5e9;
+            --categorical: #ec4899;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            background-image:
+                radial-gradient(circle at 0% 0%, rgba(194, 65, 12, 0.1) 0%, transparent 30%),
+                radial-gradient(circle at 100% 100%, rgba(14, 165, 233, 0.05) 0%, transparent 30%);
+            background-attachment: fixed;
+            color: var(--text-main);
+            line-height: 1.7;
+        }
+
+        .hero {
+            padding: 6rem 1.5rem 4rem;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.5rem 1.2rem;
+            background: rgba(194, 65, 12, 0.15);
+            color: var(--primary-light);
+            border-radius: 100px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(194, 65, 12, 0.3);
+        }
+
+        .video-container {
+            max-width: 900px;
+            margin: 0 auto 5rem;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+            border: 1px solid var(--glass-border);
+            aspect-ratio: 16 / 9;
+        }
+
+        .video-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem 6rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 5rem;
+        }
+
+        .scenario-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            padding: 2.5rem;
+            border-radius: 24px;
+            transition: transform 0.3s;
+        }
+
+        .scenario-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .scenario-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .scenario-card p {
+            color: var(--text-dim);
+            font-size: 1rem;
+        }
+
+        .principle-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .principle-card {
+            padding: 3rem;
+            border-radius: 32px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .principle-card.consequential {
+            background: rgba(14, 165, 233, 0.05);
+            border: 1px solid rgba(14, 165, 233, 0.2);
+        }
+
+        .principle-card.categorical {
+            background: rgba(236, 72, 153, 0.05);
+            border: 1px solid rgba(236, 72, 153, 0.2);
+        }
+
+        .principle-card h4 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            z-index: 1;
+        }
+
+        .consequential h4 {
+            color: var(--utilitarian);
+        }
+
+        .categorical h4 {
+            color: var(--categorical);
+        }
+
+        .case-study {
+            background: linear-gradient(rgba(20, 20, 25, 0.9), rgba(20, 20, 25, 0.9)), url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=80&w=1000') center/cover;
+            padding: 5rem 3rem;
+            border-radius: 32px;
+            border: 1px solid var(--glass-border);
+            margin-top: 5rem;
+            text-align: center;
+        }
+
+        .case-study h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #fff;
+        }
+
+        .case-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+            color: var(--text-dim);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 4rem 1.5rem;
+            border-top: 1px solid var(--glass-border);
+            margin-top: 4rem;
+        }
+
+        .nav-link {
+            color: var(--text-dim);
+            text-decoration: none;
+            margin: 0 1rem;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-light);
+        }
+
+        @media (max-width: 768px) {
+            .principle-box {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 4rem 1.5rem 2rem;
+            }
+
+            .case-study {
+                padding: 3rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="hero">
+        <span class="badge">Lecture Snippet • Harvard University</span>
+        <h1>Justice: What's the Right Thing to Do?</h1>
+        <p>Episode 01: The Moral Side of Murder. A profound exploration of ethics, utilitarianism, and the value of
+            human life through the lens of Professor Michael Sandel.</p>
+    </div>
+
+    <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/3lcfJE2AuPM" title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+    </div>
+
+    <div class="container">
+        <div class="section-title">
+            <h2>The Thought Experiments</h2>
+            <p>Sandel uses these famous hypotheticals to test our moral intuitions.</p>
+        </div>
+
+        <div class="grid">
+            <div class="scenario-card">
+                <h3>1. The Trolley Problem</h3>
+                <p>A runaway trolley is hurtling toward five workers. You can turn it onto a side track where only one
+                    worker is present. Do you kill one to save five?</p>
+            </div>
+            <div class="scenario-card">
+                <h3>2. The Fat Man</h3>
+                <p>This time, you're on a bridge. To stop the trolley from killing five workers below, you must push a
+                    fat man off the bridge onto the tracks. Is it still "better that one die so five live"?</p>
+            </div>
+            <div class="scenario-card">
+                <h3>3. The Transplant Surgeon</h3>
+                <p>Five patients need organ transplants to live. A healthy man comes in for a checkup. Do you "yank out
+                    his five organs" to save the five? Why does this feel different?</p>
+            </div>
+        </div>
+
+        <div class="section-title" style="margin-top: 6rem;">
+            <h2>The Two Paths of Morality</h2>
+            <p>The lecture identifies two core modes of moral reasoning that emerged from the student debates.</p>
+        </div>
+
+        <div class="principle-box">
+            <div class="principle-card consequential">
+                <h4>Consequentialist</h4>
+                <p>Morality is located in the <strong>results</strong> of an act. The right thing to do depends on the
+                    state of the world that follows. "Better that five should live, even if one must die."</p>
+                <div style="margin-top: 1.5rem; font-size: 0.9rem; font-weight: 700;">Philosophy: Utilitarianism (Jeremy
+                    Bentham)</div>
+            </div>
+            <div class="principle-card categorical">
+                <h4>Categorical</h4>
+                <p>Morality is located in certain <strong>absolute requirements</strong>, duties, and rights, regardless
+                    of the consequences. Some acts are just "categorically wrong," even if they save lives.</p>
+                <div style="margin-top: 1.5rem; font-size: 0.9rem; font-weight: 700;">Philosophy: Deontology (Immanuel
+                    Kant)</div>
+            </div>
+        </div>
+
+        <div class="case-study">
+            <h2>The Queen vs. Dudley & Stephens</h2>
+            <div class="case-content">
+                <p style="margin-bottom: 1.5rem; color: #fff; font-style: italic;">"A sadder story of disaster at sea
+                    was never told..."</p>
+                <p>In 1884, four men were stranded in a lifeboat in the South Atlantic for 20 days. Starving and
+                    desperate, Captain Dudley and First Mate Stephens killed the youngest crew member, the cabin boy
+                    Richard Parker, to survive. They ate his remains and were eventually rescued.</p>
+                <p style="margin-top: 1.5rem;"><strong>The Question:</strong> Was it morally permissible to sacrifice
+                    the one to save the three, given the extreme necessity? Or is murder always murder, regardless of
+                    the stakes?</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p style="color: var(--text-dim); margin-bottom: 2rem;">"Philosophy estranges us from the familiar, not by
+                supplying new information, but by provoking a new way of seeing." — Michael Sandel</p>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="us-travel-ranking.html" class="nav-link">Travel Stats</a>
+                <a href="african-fertility-rates.html" class="nav-link">Demographics</a>
+                <a href="sitemap.xml" class="nav-link">Sitemap</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
