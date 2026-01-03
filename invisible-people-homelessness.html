@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invisible People: The Human Face of Homelessness</title>
+    <meta name="description"
+        content="Explore the powerful stories of homelessness through Mark Horvath's Invisible People. Humanizing the crisis through first-person documentaries.">
+    <style>
+        :root {
+            --primary: #ef4444;
+            /* Alert Red */
+            --bg-dark: #09090b;
+            --card-bg: rgba(24, 24, 27, 0.8);
+            --text-main: #fafafa;
+            --text-dim: #a1a1aa;
+            --glass-border: rgba(255, 255, 255, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        .header {
+            padding: 5rem 1.5rem 2rem;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .brand {
+            font-weight: 900;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .header h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: var(--text-dim);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem 6rem;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            margin-bottom: 4rem;
+            border: 1px solid var(--glass-border);
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .content-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 5rem;
+            align-items: center;
+        }
+
+        .text-block h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .text-block p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            color: var(--text-dim);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            text-align: center;
+        }
+
+        .stat-card .val {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #fff;
+            display: block;
+        }
+
+        .stat-card .label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--primary);
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, #18181b, #09090b);
+            padding: 4rem 3rem;
+            border-radius: 32px;
+            text-align: center;
+            border: 1px solid var(--glass-border);
+            margin-bottom: 5rem;
+        }
+
+        .quote-box blockquote {
+            font-size: 1.5rem;
+            font-weight: 500;
+            font-style: italic;
+            margin-bottom: 2rem;
+            color: #fff;
+        }
+
+        .quote-box cite {
+            font-weight: 700;
+            color: var(--primary);
+            font-style: normal;
+        }
+
+        .mission-cta {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: rgba(239, 68, 68, 0.05);
+            border-radius: 32px;
+            border: 1px solid rgba(239, 68, 68, 0.1);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 4rem 1.5rem;
+            border-top: 1px solid var(--glass-border);
+            margin-top: 4rem;
+            color: var(--text-dim);
+        }
+
+        .links {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .content-section {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 2.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <span class="brand">Invisible People</span>
+        <h1>Making the Invisible Visible</h1>
+        <p>Amplifying the voices of those experiencing homelessness through raw storytelling and first-person
+            documentaries.</p>
+    </header>
+
+    <div class="container">
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/iG4afD_ycLk" title="Helping USA's Homeless with Mark Horvath"
+                allowfullscreen></iframe>
+        </div>
+
+        <div class="content-section">
+            <div class="text-block">
+                <h2>The Mission</h2>
+                <p>Invisible People is a 501(c)(3) non-profit dedicated to educating the public about homelessness.
+                    Founded by Mark Horvath, who himself experienced life on the streets, the platform humanizes a
+                    crisis often reduced to statistics.</p>
+                <p>By using a smartphone and a digital camera, Mark captures the unfiltered reality of those living in
+                    tents, cars, and shelters across America.</p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="val">600K+</span>
+                    <span class="label">Subscribers</span>
+                </div>
+                <div class="stat-card">
+                    <span class="val">1,000+</span>
+                    <span class="label">Stories Told</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="quote-box">
+            <blockquote>"I’m not a professional journalist. I’m just a guy with a phone who cares. I want you to look
+                these people in the eye and realize they are just like you."</blockquote>
+            <cite>— Mark Horvath, Founder</cite>
+        </div>
+
+        <div class="mission-cta">
+            <h3 style="margin-bottom: 1rem; font-size: 1.8rem;">Change the Perception</h3>
+            <p style="color: var(--text-dim); margin-bottom: 2rem;">Homelessness is a solvable problem. It begins with
+                empathy and ends with action. Explore the stories of our neighbors who are often overlooked.</p>
+            <a href="https://invisiblepeople.tv" target="_blank"
+                style="display: inline-block; background: var(--primary); color: #fff; padding: 1rem 2rem; border-radius: 12px; text-decoration: none; font-weight: 700; transition: 0.2s;">Visit
+                Invisible People TV</a>
+        </div>
+
+        <footer class="footer">
+            <p>Advocating for the human dignity of every person.</p>
+            <div class="links">
+                <a href="index.html" class="link">Home</a>
+                <a href="charlie-munger-method.html" class="link">Wealth Strategy</a>
+                <a href="justice-moral-side-of-murder.html" class="link">Justice Ethics</a>
+                <a href="sitemap.xml" class="link">Sitemap</a>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

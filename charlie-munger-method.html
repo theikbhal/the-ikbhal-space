@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Munger Method: 35-Year Wealth Compounding Plans</title>
+    <meta name="description"
+        content="Master the art of compounding with Charlie Munger's principles. 35-year roadmaps from $1,000 to $1 Million and $1 Million to $1 Billion.">
+    <style>
+        :root {
+            --primary: #fbbf24;
+            /* Munger Gold */
+            --primary-dark: #d97706;
+            --secondary: #10b981;
+            /* Growth Green */
+            --bg-dark: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+            --glass-border: rgba(255, 255, 255, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-dark);
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(251, 191, 36, 0.05) 0%, transparent 25%),
+                radial-gradient(circle at 90% 80%, rgba(16, 185, 129, 0.05) 0%, transparent 25%);
+            background-attachment: fixed;
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        .hero {
+            padding: 6rem 1.5rem 4rem;
+            text-align: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            line-height: 1;
+            margin-bottom: 2rem;
+            background: linear-gradient(to right, #fff, #fbbf24);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-dim);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 8rem;
+        }
+
+        .plan-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 6rem;
+        }
+
+        .plan-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            padding: 3rem;
+            border-radius: 32px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        .plan-card h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .plan-card .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-dim);
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+        }
+
+        .stat-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .stat {
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .rules-section {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 40px;
+            padding: 5rem 3rem;
+            margin-bottom: 6rem;
+            border: 1px solid var(--glass-border);
+        }
+
+        .rules-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .rules-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .rules-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .rule-item {
+            display: flex;
+            gap: 1.5rem;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 24px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .rule-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: rgba(251, 191, 36, 0.2);
+            line-height: 1;
+        }
+
+        .rule-content h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            color: var(--primary);
+        }
+
+        .rule-content p {
+            font-size: 0.95rem;
+            color: var(--text-dim);
+        }
+
+        .video-box {
+            margin-top: 5rem;
+            border-radius: 32px;
+            overflow: hidden;
+            aspect-ratio: 16/9;
+            box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.8);
+            border: 1px solid var(--glass-border);
+        }
+
+        .video-box iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .munger-quote {
+            text-align: center;
+            padding: 6rem 1.5rem;
+            font-style: italic;
+        }
+
+        .munger-quote blockquote {
+            font-size: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #fff;
+            line-height: 1.4;
+        }
+
+        .munger-quote cite {
+            display: block;
+            margin-top: 1.5rem;
+            font-size: 1.1rem;
+            color: var(--primary);
+            font-style: normal;
+            font-weight: 700;
+        }
+
+        .car-warning {
+            background: linear-gradient(135deg, #7f1d1d, #450a0a);
+            padding: 4rem;
+            border-radius: 32px;
+            margin-top: 6rem;
+            text-align: center;
+        }
+
+        .car-warning h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .car-warning p {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            color: #fecaca;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 4rem;
+            border-top: 1px solid var(--glass-border);
+            color: var(--text-dim);
+        }
+
+        .nav-links {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .nav-link:hover {
+            color: #fff;
+        }
+
+        @media (max-width: 850px) {
+            .plan-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 4rem 1.5rem 2rem;
+            }
+
+            .principle-box {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="hero">
+        <h1>The Munger Method</h1>
+        <p>Wisdom from Charlie Munger on building world-class wealth through compounding, avoiding stupidity, and
+            long-term thinking.</p>
+    </header>
+
+    <div class="container">
+        <!-- 35 Year Wealth Plans -->
+        <div class="plan-grid">
+            <div class="plan-card">
+                <div class="subtitle">The Road to Freedom</div>
+                <h2>$1,000 to $1 Million</h2>
+                <p style="color: var(--text-dim); margin-bottom: 2rem;">A 35-year blueprint for the retail investor to
+                    achieve seven-figure status.</p>
+                <div class="stat-group">
+                    <div class="stat">
+                        <div class="stat-label">Time Horizon</div>
+                        <div class="stat-value">35 Years</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-label">Target Return</div>
+                        <div class="stat-value">~21.8% CAGR</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-label">Starting Capital</div>
+                        <div class="stat-value">$1,000</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-label">Final Value</div>
+                        <div class="stat-value">$1,000,000+</div>
+                    </div>
+                </div>
+                <p style="font-size: 0.9rem; color: var(--text-dim);">Requires high-yield growth assets or consistent
+                    additional contributions centered on core Munger principles.</p>
+            </div>
+
+            <div class="plan-card" style="border-color: rgba(16, 185, 129, 0.3);">
+                <div class="subtitle">The Road to Legacy</div>
+                <h2>$1M to $1 Billion</h2>
+                <p style="color: var(--text-dim); margin-bottom: 2rem;">A 35-year roadmap for high-net-worth compounding
+                    at scale.</p>
+                <div class="stat-group">
+                    <div class="stat">
+                        <div class="stat-label">Time Horizon</div>
+                        <div class="stat-value">35 Years</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-label">Target Return</div>
+                        <div class="stat-value">~21.8% CAGR</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-label">Starting Capital</div>
+                        <div class="stat-value">$1,000,000</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-label">Final Value</div>
+                        <div class="stat-value">$1,000,000,000</div>
+                    </div>
+                </div>
+                <p style="font-size: 0.9rem; color: var(--text-dim);">Focused on the transition from picking stocks to
+                    picking management and letting time do the heavy lifting.</p>
+            </div>
+        </div>
+
+        <div class="munger-quote">
+            <blockquote>"The first $100,000 is a b*tch, but you gotta do it. I don't care what you have to do—if it
+                means walking everywhere and not eating anything that wasn't purchased with a coupon, find a way to get
+                your hands on $100,000. After that, you can ease off the accelerator a bit."</blockquote>
+            <cite>— Charlie Munger</cite>
+        </div>
+
+        <!-- 7 Rules Section -->
+        <div class="rules-section">
+            <div class="rules-header">
+                <h2>7 Rules Billionaires Follow (But Never Discuss)</h2>
+                <p style="color: var(--text-dim);">Based on 60 years of watching smart people destroy themselves.</p>
+            </div>
+
+            <div class="rules-list">
+                <div class="rule-item">
+                    <div class="rule-number">01</div>
+                    <div class="rule-content">
+                        <h3>Learn from Others' Mistakes</h3>
+                        <p>Study market crashes and bankruptcies. "I'm not smart enough to make every mistake myself."
+                        </p>
+                    </div>
+                </div>
+                <div class="rule-item">
+                    <div class="rule-number">02</div>
+                    <div class="rule-content">
+                        <h3>Don't Buy What You Don't Get</h3>
+                        <p>If you can't explain it to a 10-year-old, don't own it. Avoid flashy crypto or complex
+                            derivatives if you don't master them.</p>
+                    </div>
+                </div>
+                <div class="rule-item">
+                    <div class="rule-number">03</div>
+                    <div class="rule-content">
+                        <h3>Stop Being in a Hurry</h3>
+                        <p>Wealth is built in the sitting and waiting, not the trading. 20% compounding for decades is
+                            the "secret."</p>
+                    </div>
+                </div>
+                <div class="rule-item">
+                    <div class="rule-number">04</div>
+                    <div class="rule-content">
+                        <h3>Extreme Concentration</h3>
+                        <p>Diversification is protection against ignorance. If you know what you're doing, you only need
+                            6-10 great businesses.</p>
+                    </div>
+                </div>
+                <div class="rule-item">
+                    <div class="rule-number">05</div>
+                    <div class="rule-content">
+                        <h3>Watch Fees & Taxes</h3>
+                        <p>Minimize trading to avoid capital gains. Taxes and fees are the slow leak that sinks the
+                            ship.</p>
+                    </div>
+                </div>
+                <div class="rule-item">
+                    <div class="rule-number">06</div>
+                    <div class="rule-content">
+                        <h3>Master Your Emotions</h3>
+                        <p>The market is a machine to transfer money from the impatient to the patient. Fear and greed
+                            are your only true enemies.</p>
+                    </div>
+                </div>
+                <div class="rule-item">
+                    <div class="rule-number">07</div>
+                    <div class="rule-content">
+                        <h3>Never Quit Early</h3>
+                        <p>The magic happens at the end of the curve. Most people quit right before the exponential
+                            phase kicks in.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="video-box">
+                <iframe src="https://www.youtube.com/embed/U9MrM6HVLck" title="YouTube video player"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <!-- Car Warning Section -->
+        <div class="car-warning">
+            <h2>Don't Buy a Car: The Wealth Destroyer</h2>
+            <p>Cars are depreciating assets that consume capital, insurance, maintenance, and interest. For the first
+                few decades of compounding, every dollar wasted on a status symbol is a dollar removed from your future
+                billion-dollar legacy.</p>
+            <div style="max-width: 800px; margin: 0 auto; border-radius: 20px; overflow: hidden; aspect-ratio: 16/9;">
+                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/vG1DaNpPqB4" frameborder="0"
+                    allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Join the conversation on <strong>The Munger Method</strong>. Wealth isn't about being smart; it's about
+                not being stupid.</p>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="justice-moral-side-of-murder.html" class="nav-link">Justice Ethics</a>
+                <a href="sitemap.xml" class="nav-link">Sitemap</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
